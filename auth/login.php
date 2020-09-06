@@ -20,12 +20,15 @@
                     <h3 class="text-center">Login</h3>
                     <?php
                     
-                    if(isset($_POST['login'])){
-                        echo 'test';
+                    if (isset($_POST['submit']) && !empty($_POST['submit'])) {
+                        foreach ($_POST as $key => $value) {
+                            $$key = prepare_input($value);
+                        }
+                        echo $email;
                     }
                     ?>
                     <div>
-                        <form class="border p-5 my-3 " method="POST" action="#">
+                        <form class="border p-5 my-3 " method="POST" action="login.php">
                             <div class="form-group">
                                 <label for="email"  class="text-dark">Email</label>
                                 <input type="email" name="email" name="email" class="form-control" id="email">
@@ -34,7 +37,7 @@
                                 <label for="password"  class="text-dark ">Password</label>
                                 <input type="password" name="password" class="form-control" id="password" name="password">
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary btn-block" name="login">Login</button>
+                            <button type="submit" name="submit" class="btn btn-primary btn-block" value="submit">Login</button>
                         </form>
                     </div>
                 </div>
