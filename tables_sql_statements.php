@@ -6,7 +6,7 @@ defined('DB_USERNAME') || define('DB_USERNAME','root');
 // Database Password
 defined('DB_PASSWORD') || define('DB_PASSWORD','');
 // Database Name
-defined('DB_NAME') || define('DB_NAME','medical_test');
+defined('DB_NAME') || define('DB_NAME','medical');
 
 // Connect to Database Server 
 $connection = mysqli_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
