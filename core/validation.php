@@ -28,7 +28,7 @@ function is_email(string $value) : bool
 * @param mixed $vlaue
 * @return bool
 */
-function value_string($value) : bool
+function is_string_modified($value) : bool
 {
 	return is_string($value);
 }
@@ -41,6 +41,6 @@ function value_string($value) : bool
 */
 function is_required($value) : bool
 {
-	return isset($value) && !empty($value);
+	return !empty($value);
 }
 

@@ -8,7 +8,7 @@
 */
 function redirect(string $path) : void 
 {
-	header('location:'.$path);
+	header('location:'.WEBSITE_URL.$path);
 }
 
 ?>

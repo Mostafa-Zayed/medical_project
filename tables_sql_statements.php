@@ -17,8 +17,8 @@ $state_admins_sql = "create table if not exists `admins` (
 							`admin_name` varchar(255) not null,
 							`admin_email` varchar(100) not null unique,
 							`admin_password` varchar(255) not null,
-							`admin_type` enum('super_admin','admin')  default 'super_admin',
-							`admin_is_active` tinyint(1) not null default 0
+							`admin_type` enum('super_admin','admin')  default 'admin' not null,
+							`admin_is_active` enum('1','0') not null default 0
 						)";
 
 $admin_excute_sql = mysqli_query($connection,$state_admins_sql);
