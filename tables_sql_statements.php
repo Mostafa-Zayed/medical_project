@@ -17,8 +17,8 @@ $state_admins_sql = "create table if not exists `admins` (
 							`admin_name` varchar(255) not null,
 							`admin_email` varchar(100) not null unique,
 							`admin_password` varchar(255) not null,
-							`admin_type` enum('super_admin','admin')  default 'admin' not null,
-							`admin_is_active` enum('1','0') not null default 0
+							`admin_type` enum('super_admin','admin') not null default 'admin',
+							`admin_is_active` enum('1','0') default '0' not null
 						)";
 
 $admin_excute_sql = mysqli_query($connection,$state_admins_sql);
@@ -27,7 +27,7 @@ $admin_excute_sql = mysqli_query($connection,$state_admins_sql);
 $state_services_sql = "create table if not exists `services` (
 							`service_id` integer unsigned not null primary key auto_increment,
 							`service_name` varchar(100) not null unique,
-							`service_is_active` boolean not null default 1
+							`service_is_active` enum('1','0') not null default '1'
 						)";
 
 $services_excute_sql = mysqli_query($connection,$state_services_sql);
@@ -36,7 +36,7 @@ $services_excute_sql = mysqli_query($connection,$state_services_sql);
 $state_cities_sql = "create table if not exists `cities` (
 							`city_id` integer unsigned not null primary key auto_increment,
 							`city_name` varchar(100) not null,
-							`city_is_active` bool not null default 1
+							`city_is_active` enum('1','0') not null default '1'
 						)";								
 
 $cities_excute_sql = mysqli_query($connection,$state_cities_sql);
