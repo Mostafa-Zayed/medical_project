@@ -24,17 +24,43 @@
                         foreach ($_POST as $key => $value) {
                             $$key = prepare_input($value);
                         }
-                        echo $email;
+                        // Validation
+                        // email: required, email, max: 100
+                        if (! is_required($email)) {
+                            $errors['email'] = 'required';
+                        } elseif (! is_email($email)) {
+                            $errors['email'] = 'Must be Email';
+                        } elseif (! is_not_more_than($email, MAXEMAILLENGTH)) {
+                            $errors['email'] = 'Must be less than '.MAXEMAILLENGTH;
+                        }
+
+                        // password: required, string, max: 100
+                        if (! is_required($password)) {
+                            $errors['password'] = 'required';
+                        } elseif (! is_string_modified($password)) {
+                            $errors['password'] = 'Must be string';
+                        } elseif (! is_not_more_than($password, MAXEMAILLENGTH)) {
+                            $errors['password'] = 'Must be less than '.MAXPASSWORDLENGTH;
+                        }
+
+                        if (empty($errors)) {
+                            $admin = get_one("admins", "admin_email = '$email'");
+                            if (! empty($admin)) {
+                                $password_match = password_verify($password, $admin['admin_password']);
+                                echo $password_match;
+                            }
+                        }
                     }
+                   //print_r($errors);
                     ?>
                     <div>
                         <form class="border p-5 my-3 " method="POST" action="login.php">
                             <div class="form-group">
-                                <label for="email"  class="text-dark">Email</label>
+                                <label for="email"  class="text-dark">Email :</label> <?=getError('email'); ?>
                                 <input type="email" name="email" name="email" class="form-control" id="email">
                             </div>
                             <div class="form-group">
-                                <label for="password"  class="text-dark ">Password</label>
+                                <label for="password"  class="text-dark ">Password : <?=getError('password');?></label>
                                 <input type="password" name="password" class="form-control" id="password" name="password">
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary btn-block" value="submit">Login</button>

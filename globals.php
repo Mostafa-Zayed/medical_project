@@ -25,9 +25,12 @@ defined('ADMIN') || define('ADMIN',ROOT.'admin'.DS);
 defined('WEBSITE_URL') || define('WEBSITE_URL','http://'.$_SERVER['HTTP_HOST'].DS.'medical'.DS);
 
 // ADMIDN URL LINK
-defined('ADMIN_URL') || define('ADMIN_URL','http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']).ADMIN.DS);
+defined('ADMIN_URL') || define('ADMIN_URL','http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']).DS.'admin'.DS);
+
+// ASSETS URL LINK
+defined('ASSETS_URL') || define('ASSETS_URL','http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']).DS.'assets'.DS);
 
 // SITE_TITLE
-defined('SITE_TITLE') || define('SITE_TITLE','Medical System');
+defined('WEBSITE_TITLE') || define('WEBSITE_TITLE','Medical System');
 
 ?>
